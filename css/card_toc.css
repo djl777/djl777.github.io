@@ -1,0 +1,10 @@
+div#card-toc {
+    padding: 20px 5px !important;
+}
+div#card-toc .item-headline {
+    padding: 0 24px  !important;
+}
+ #aside-content #card-toc .toc-content {
+    width: 100% !important;
+    margin: 0 0px  !important;
+}
