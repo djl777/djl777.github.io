@@ -3409,7 +3409,7 @@ h1.page-title + .tag-cloud-list {
   }
 }
 #page-header.post-bg:before {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0);
 }
 #page-header #post-info {
   position: absolute;
