@@ -17,7 +17,7 @@ div#card-toc .item-headline {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #e58a8a;
+    background-color: #da8ae5;
     background-image: -webkit-linear-gradient( 45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);
     border-radius: 2em;
 }
@@ -28,5 +28,5 @@ div#card-toc .item-headline {
 
 ::-moz-selection {
     color: #fff;
-    background-color: #e58a8a;
+    background-color: #da8ae5;
 }
