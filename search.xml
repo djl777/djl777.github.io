@@ -33,6 +33,31 @@
     
     
     <entry>
+      <title>python 类 库</title>
+      <link href="/2022/08/19/language-python-lib/"/>
+      <url>/2022/08/19/language-python-lib/</url>
+      
+        <content type="html"><![CDATA[<h1>collection</h1><h2 id="counter">counter</h2><p><a href="https://zhuanlan.zhihu.com/p/355601478">详解Python计数的Counter类 - 知乎 (zhihu.com)</a></p><h3 id="可以直接与字典相加">可以直接与字典相加(+)</h3><p> </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>leetcode数位DP题</title>
       <link href="/2022/08/15/algorithm-leetcode-%E6%95%B0%E4%BD%8DDP/"/>
       <url>/2022/08/15/algorithm-leetcode-%E6%95%B0%E4%BD%8DDP/</url>
