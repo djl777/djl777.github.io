@@ -69,14 +69,14 @@ function render() {
 }
 
 function starForge() {
-    const sprite = new THREE.TextureLoader().load( 'img/disc.png' );
+    const sprite = new THREE.TextureLoader().load( 'img/snowflake2.png' );
 
     var amount = 45000;
     geometry = new THREE.SphereGeometry(1000, 100, 50);
 
     materialOptions = {
         color: new THREE.Color(0xffffff),
-        size: 1,
+        size: 1.2,
         transparency: true,
         opacity: 0.8,
         map: sprite
