@@ -69,14 +69,17 @@ function render() {
 }
 
 function starForge() {
+    const sprite = new THREE.TextureLoader().load( 'disc.png' );
+
     var amount = 45000;
     geometry = new THREE.SphereGeometry(1000, 100, 50);
 
     materialOptions = {
         color: new THREE.Color(0xffffff),
-        size: 1.1,
+        size: 1,
         transparency: true,
-        opacity: 0.8
+        opacity: 0.8,
+        map: sprite
     };
 
     starStuff = new THREE.PointsMaterial(materialOptions);
