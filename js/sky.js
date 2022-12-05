@@ -69,7 +69,7 @@ function render() {
 }
 
 function starForge() {
-    // const sprite = new THREE.TextureLoader().load( 'disc.png' );
+    const sprite = new THREE.TextureLoader().load( 'img/disc.png' );
 
     var amount = 45000;
     geometry = new THREE.SphereGeometry(1000, 100, 50);
