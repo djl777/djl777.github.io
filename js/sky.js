@@ -77,7 +77,7 @@ function starForge() {
 
     materialOptions = {
         color: new THREE.Color(0xffffff),
-        size: 1.0,
+        size: 1.1,
         transparency: true,
         opacity: 0.8,
         map: sprite
