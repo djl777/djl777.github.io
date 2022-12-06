@@ -72,7 +72,7 @@ function render() {
 function starForge() {
     sprite = new THREE.TextureLoader().load( '/img/ball.png' );
 
-    var amount = 45000;
+    var amount = 100000;
     geometry = new THREE.SphereGeometry(1000, 100, 50);
 
     materialOptions = {
