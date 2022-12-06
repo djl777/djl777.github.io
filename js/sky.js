@@ -79,8 +79,8 @@ function starForge() {
         color: new THREE.Color(0xffffff),
         size: 1.0,
         transparency: true,
-        opacity: 0.8,
-        map: sprite
+        opacity: 0.8
+        // map: sprite
     };
 
     starStuff = new THREE.PointsMaterial(materialOptions);
