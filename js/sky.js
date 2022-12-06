@@ -70,7 +70,7 @@ function render() {
 }
 
 function starForge() {
-    sprite = new THREE.TextureLoader().load( '/img/snowflake7_alpha.png' );
+    sprite = new THREE.TextureLoader().load( '/img/snowflake.png' );
 
     var amount = 45000;
     geometry = new THREE.SphereGeometry(1000, 100, 50);
