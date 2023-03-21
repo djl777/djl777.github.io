@@ -2453,7 +2453,7 @@ h1.page-title + .tag-cloud-list {
   left: 10px;
 }
 .card-widget:not(.card-info) .item-headline:after {
-  content: "akilar";
+  content: "0x3f";
   position: absolute;
   bottom: 0;
   font-size: 12px;
@@ -4448,10 +4448,46 @@ hr::after {
   width: 130px;
   color: #858585;
 }
+:root {
+  --rightside-background: rgba(14,14,14,0.95);
+  --rightside-background-hover: rgba(180,50,35,0.95);
+  --rightside-font-color: #fff;
+  --rightside-box-shadow: #888;
+  --rightside-icon-background: rgba(101,103,107,0.6);
+  --rightside-icon-color: #fff;
+  --rightside-icon-shadow: #b6bac3;
+  --rightside-corner-background: #c27314;
+  --rightside-corner-color: #cdcdcd;
+  --rightside-corner-shadow: #222;
+  --rightside-m-background-color: #2e302f;
+  --rightside-m-border-color: #be7321;
+  --rightside-m-icon-color: #fff;
+  --rightside-m-icon-background: #707472;
+  --rightside-m-icon-border-color: #464a58;
+  --rightside-m-hover-color: #8c2c20;
+  --rightside-transition: all 0.5s cubic-bezier(0.59, 0.01, 0.48, 1.17);
+}
+[data-theme="dark"] {
+  --rightside-background: rgba(35,50,68,0.75);
+  --rightside-background-hover: rgba(83,65,165,0.95);
+  --rightside-font-color: #fff;
+  --rightside-box-shadow: #888;
+  --rightside-icon-background: rgba(45,45,60,0.6);
+  --rightside-icon-color: #2983be;
+  --rightside-icon-shadow: #2d342b;
+  --rightside-corner-background: #2983be;
+  --rightside-corner-color: #fff;
+  --rightside-corner-shadow: #222;
+  --rightside-m-background-color: #2e302f;
+  --rightside-m-border-color: #2556ab;
+  --rightside-m-icon-color: #fff;
+  --rightside-m-icon-background: #707472;
+  --rightside-m-icon-border-color: #141e29;
+  --rightside-m-hover-color: rgba(83,65,165,0.95);
+}
 #rightside {
+  font-family: 'SAOUI', 'TaikoMagic', 'ZhuZiAYuanJWD';
   position: fixed;
-  right: -48px;
-  bottom: 40px;
   z-index: 100;
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -4472,11 +4508,11 @@ hr::after {
   -o-transition: -o-transform 0.4s;
   -ms-transition: -ms-transform 0.4s;
   transition: transform 0.4s;
-  -webkit-transform: translate(45px, 0);
-  -moz-transform: translate(45px, 0);
-  -o-transform: translate(45px, 0);
-  -ms-transform: translate(45px, 0);
-  transform: translate(45px, 0);
+  -webkit-transform: translate(100%, 0);
+  -moz-transform: translate(100%, 0);
+  -o-transform: translate(100%, 0);
+  -ms-transform: translate(100%, 0);
+  transform: translate(100%, 0);
 }
 #rightside #rightside-config-hide.show {
   height: auto;
@@ -4497,20 +4533,8 @@ hr::after {
 }
 #rightside > div > button,
 #rightside > div > a {
-  display: block;
-  margin-bottom: 5px;
-  width: 35px;
-  height: 35px;
-  border-radius: 5px;
-  background-color: var(--btn-bg);
-  color: var(--btn-color);
   text-align: center;
   font-size: 16px;
-  line-height: 35px;
-}
-#rightside > div > button:hover,
-#rightside > div > a:hover {
-  background-color: var(--btn-hover-color);
 }
 #rightside #mobile-toc-button {
   display: none;
@@ -4523,6 +4547,305 @@ hr::after {
 @media screen and (max-width: 900px) {
   #rightside #hide-aside-btn {
     display: none;
+  }
+}
+@media screen and (min-width: 900px) {
+  #rightside {
+    bottom: 60px;
+    right: -48px;
+  }
+  #rightside:hover> div > button,
+  #rightside:hover> div > a {
+    -webkit-transform: rotateZ(0deg);
+    -moz-transform: rotateZ(0deg);
+    -o-transform: rotateZ(0deg);
+    -ms-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+    -webkit-transform-origin: right;
+    -moz-transform-origin: right;
+    -o-transform-origin: right;
+    -ms-transform-origin: right;
+    transform-origin: right;
+    -webkit-transition: -webkit-transform 0.4s;
+    -moz-transition: -moz-transform 0.4s;
+    -o-transition: -o-transform 0.4s;
+    -ms-transition: -ms-transform 0.4s;
+    transition: transform 0.4s;
+  }
+  #rightside:hover> div > button i,
+  #rightside:hover> div > a i,
+  #rightside:hover> div > button svg,
+  #rightside:hover> div > a svg {
+    -webkit-transform: rotateZ(0deg);
+    -moz-transform: rotateZ(0deg);
+    -o-transform: rotateZ(0deg);
+    -ms-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+    -webkit-transition: -webkit-transform 0.4s;
+    -moz-transition: -moz-transform 0.4s;
+    -o-transition: -o-transform 0.4s;
+    -ms-transition: -ms-transform 0.4s;
+    transition: transform 0.4s;
+  }
+  #rightside:hover> div > button span,
+  #rightside:hover> div > a span {
+    opacity: 1;
+    -ms-filter: none;
+    filter: none;
+    clip-path: inset(0);
+    -webkit-transition: all 0.3s 0.2s;
+    -moz-transition: all 0.3s 0.2s;
+    -o-transition: all 0.3s 0.2s;
+    -ms-transition: all 0.3s 0.2s;
+    transition: all 0.3s 0.2s;
+  }
+  #rightside> div > button,
+  #rightside> div > a {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    margin-bottom: 5px;
+    position: relative;
+    padding: 6px 15px 0px 0px;
+    width: 135px;
+    height: 50px;
+    -webkit-transform: rotateZ(-90deg);
+    -moz-transform: rotateZ(-90deg);
+    -o-transform: rotateZ(-90deg);
+    -ms-transform: rotateZ(-90deg);
+    transform: rotateZ(-90deg);
+    -webkit-transform-origin: right;
+    -moz-transform-origin: right;
+    -o-transform-origin: right;
+    -ms-transform-origin: right;
+    transform-origin: right;
+    -webkit-transition: -webkit-transform 0.4s;
+    -moz-transition: -moz-transform 0.4s;
+    -o-transition: -o-transform 0.4s;
+    -ms-transition: -ms-transform 0.4s;
+    transition: transform 0.4s;
+    border-radius: 0px;
+    background-color: var(--rightside-background);
+    color: var(--rightside-font-color);
+    clip-path: polygon(100% 0, 60px 0, 50px 10px, 30px 10px, 0 40px, 0 100%, 50px 100%, 60px 40px, calc(100% - 10px) 40px, 100% 30px);
+    -webkit-box-shadow: 1px 0px 5px var(--rightside-box-shadow) inset;
+    box-shadow: 1px 0px 5px var(--rightside-box-shadow) inset;
+    border-radius: 35px 0px 30px 0px;
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -o-box-align: start;
+    -ms-flex-align: start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-box-direction: reverse;
+    -moz-box-direction: reverse;
+    -o-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -o-box-orient: horizontal;
+    -webkit-flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -o-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+  }
+  #rightside> div > button i,
+  #rightside> div > a i,
+  #rightside> div > button svg,
+  #rightside> div > a svg {
+    -webkit-transform: rotateZ(90deg);
+    -moz-transform: rotateZ(90deg);
+    -o-transform: rotateZ(90deg);
+    -ms-transform: rotateZ(90deg);
+    transform: rotateZ(90deg);
+    -webkit-transition: -webkit-transform 0.4s;
+    -moz-transition: -moz-transform 0.4s;
+    -o-transition: -o-transform 0.4s;
+    -ms-transition: -ms-transform 0.4s;
+    transition: transform 0.4s;
+    background: var(--rightside-icon-shadow);
+    border: 1px solid var(--rightside-icon-color);
+    -webkit-box-shadow: 0px 0px 10px var(--rightside-icon-shadow) inset;
+    box-shadow: 0px 0px 10px var(--rightside-icon-shadow) inset;
+    color: var(--rightside-icon-color);
+    border-radius: 50%;
+    width: 27px;
+    height: 27px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+  }
+  #rightside> div > button span,
+  #rightside> div > a span {
+    margin: 10px 3px 0px 0px;
+    text-shadow: 1px 2px 3px var(--rightside-box-shadow);
+    line-height: 1em;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    clip-path: inset(50%);
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  #rightside> div > button::before,
+  #rightside> div > a::before {
+    content: "akilar";
+    font-size: 12px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-shadow: 0px 0px 2px var(--rightside-corner-shadow) inset;
+    box-shadow: 0px 0px 2px var(--rightside-corner-shadow) inset;
+    width: 35px;
+    padding: 0px 0px 0px 7px;
+    height: 12px;
+    line-height: 12px;
+    position: absolute;
+    background: var(--rightside-corner-background);
+    color: var(--rightside-corner-color);
+    bottom: -1px;
+    left: -1px;
+    -webkit-box-align: end;
+    -moz-box-align: end;
+    -o-box-align: end;
+    -ms-flex-align: end;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 0 100%);
+  }
+  #rightside> div > button::after,
+  #rightside> div > a::after {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    background: var(--rightside-icon-color);
+    top: -1px;
+    right: -1px;
+    clip-path: polygon(50% 0%, 100% 0%, 100% 50%, 85% 50%, 85% 15%, 50% 15%, 55% 0%, 27% 0%, 27% 30%, 27% 57%, 0% 57%, 0% 70%, 27% 70%, 27% 100%, 40% 100%, 40% 70%, 70% 70%, 70% 57%, 40% 57%, 40% 30%, 27% 30%, 27% 0%);
+  }
+  #rightside> div > button:hover,
+  #rightside> div > a:hover {
+    background: var(--rightside-background-hover);
+  }
+  #rightside> div > button:hover i,
+  #rightside> div > a:hover i {
+    color: var(--rightside-background-hover);
+  }
+}
+@media screen and (max-width: 900px) {
+  #rightside {
+    bottom: 150px;
+    right: -48px;
+  }
+  #rightside> div > button,
+  #rightside> div > a {
+    display: block;
+    background: var(--rightside-m-background-color);
+    position: relative;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+  }
+  #rightside> div > button i,
+  #rightside> div > a i,
+  #rightside> div > button svg,
+  #rightside> div > a svg {
+    background: var(--rightside-m-icon-background);
+    color: var(--rightside-m-icon-color);
+    width: 25px;
+    height: 25px;
+    padding: 3px 3px;
+    border: 2px solid var(--rightside-m-icon-border-color);
+    border-radius: 50%;
+  }
+  #rightside> div > button span,
+  #rightside> div > a span {
+    display: none;
+  }
+  #rightside> div > button::before,
+  #rightside> div > a::before {
+    content: "";
+    z-index: 2;
+    background: var(--rightside-m-border-color);
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    clip-path: polygon(50% 50%, 50% 10px, calc(50% - 3px) 10px, calc(50% - 5px) 0, calc(50% + 5px) 0, calc(50% + 3px) 10px, 50% 10px, 50% 50%, 50% calc(100% - 10px), calc(50% - 3px) calc(100% - 10px), calc(50% - 5px) 100%, calc(50% + 5px) 100%, calc(50% + 3px) calc(100% - 10px), 50% calc(100% - 10px), 50% 50%, 10px 50%, 10px calc(50% - 3px), 0 calc(50% - 5px), 0 calc(50% + 5px), 10px calc(50% + 3px), 10px 50%, 50% 50%, calc(100% - 10px) 50%, calc(100% - 10px) calc(50% - 3px), 100% calc(50% - 5px), 100% calc(50% + 5px), calc(100% - 10px) calc(50% + 3px), calc(100% - 10px) 50%, 50% 50%);
+    -webkit-transition: var(--rightside-transition);
+    -moz-transition: var(--rightside-transition);
+    -o-transition: var(--rightside-transition);
+    -ms-transition: var(--rightside-transition);
+    transition: var(--rightside-transition);
+  }
+  #rightside> div > button::after,
+  #rightside> div > a::after {
+    content: "";
+    z-index: 1;
+    background: var(--rightside-m-icon-background);
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    border-radius: 3px;
+    left: 0px;
+    top: 0px;
+    clip-path: polygon(10% 100%, 10% 0%, 0% 0%, 0% 100%, 10% 100%, 35% 100%, 40% 94%, 60% 94%, 65% 100%, 35% 100%, 35% 0%, 40% 6%, 60% 6%, 60% 0%, 35% 0%, 35% 100%, 90% 100%, 90% 0, 100% 0, 100% 100%, 35% 100%);
+  }
+  #rightside> div > button:hover,
+  #rightside> div > a:hover {
+    background: var(--rightside-m-hover-color);
+  }
+  #rightside> div > button:hover::before,
+  #rightside> div > a:hover::before {
+    left: -8px;
+    top: -8px;
+    width: 49px;
+    height: 49px;
+    -webkit-transform: rotateZ(45deg);
+    -moz-transform: rotateZ(45deg);
+    -o-transform: rotateZ(45deg);
+    -ms-transform: rotateZ(45deg);
+    transform: rotateZ(45deg);
+    -webkit-transition: var(--rightside-transition);
+    -moz-transition: var(--rightside-transition);
+    -o-transition: var(--rightside-transition);
+    -ms-transition: var(--rightside-transition);
+    transition: var(--rightside-transition);
   }
 }
 #sidebar #menu-mask {
