@@ -67,8 +67,24 @@
     border-radius: 8px;
 }
 
-#aside-content>.sticky_layout>.card-widget {
+/* #aside-content>.sticky_layout>.card-widget {
     background: rgba(255, 255, 255, .8);
 
 
+} */
+
+/*文章页面*/
+.layout>#post {
+    background: rgba(255, 255, 255, .8);
+}
+
+/*分类页面*/
+.layout>#page {
+
+    background: rgba(255, 255, 255, .6);
+}
+
+/*时间轴页面*/
+.layout>#archive {
+    background: rgba(255, 255, 255, .6);
 }
