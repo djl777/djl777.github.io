@@ -4716,7 +4716,7 @@ hr::after {
   }
   #rightside> div > button::before,
   #rightside> div > a::before {
-    content: "akilar";
+    content: "0x3f";
     font-size: 12px;
     display: -webkit-box;
     display: -moz-box;
