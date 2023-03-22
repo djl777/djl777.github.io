@@ -1,12 +1,14 @@
 div#card-toc {
     padding: 20px 5px !important;
 }
+
 div#card-toc .item-headline {
-    padding: 0 24px  !important;
+    padding: 0 24px !important;
 }
- #aside-content #card-toc .toc-content {
+
+#aside-content #card-toc .toc-content {
     width: 100% !important;
-    margin: 0 0px  !important;
+    margin: 0 0px !important;
 }
 
 
@@ -17,8 +19,8 @@ div#card-toc .item-headline {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #da8ae5;
-    background-image: -webkit-linear-gradient( 45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);
+    background-color: #a3e9eb;
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);
     border-radius: 2em;
 }
 
@@ -28,5 +30,5 @@ div#card-toc .item-headline {
 
 ::-moz-selection {
     color: #fff;
-    background-color: #da8ae5;
+    background-color: #a3e9eb;
 }
