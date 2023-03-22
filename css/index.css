@@ -2802,7 +2802,7 @@ hr::after {
   background: var(--ark-post-item-background);
   color: var(--ark-post-item-font-color);
   padding: 5px 15px;
-  font-size: 15px;
+  font-size: 5px;
   display: -ms-flexbox;
   display: box;
   display: flex;
@@ -3015,7 +3015,7 @@ hr::after {
   background: var(--ark-post-item-background);
   color: var(--ark-post-item-font-color);
   padding: 5px 15px;
-  font-size: 15px;
+  font-size: 5px;
   display: -ms-flexbox;
   display: box;
   display: flex;
