@@ -5301,15 +5301,13 @@ blockquote.pullquote.right {
   --scrollbar-color: #1f1f1f;
   --timeline-bg: #1f1f1f;
 }
-[data-theme='dark'] #web_bg {
-  background: url("../img/banner.jpg");
-}
+[data-theme='dark'] #web_bg:before,
 [data-theme='dark'] #footer:before,
 [data-theme='dark'] #page-header:before {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0,0,0,0);
   content: '';
 }
 [data-theme='dark'] #article-container code {

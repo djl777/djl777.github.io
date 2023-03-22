@@ -72,19 +72,3 @@
 
 
 }
-
-/*文章页面*/
-.layout>#post {
-    background: rgba(255, 255, 255, .8);
-}
-
-/*分类页面*/
-.layout>#page {
-
-    background: rgba(255, 255, 255, .6);
-}
-
-/*时间轴页面*/
-.layout>#archive {
-    background: rgba(255, 255, 255, .6);
-}
