@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'tzy';
+/* 字体名自定义即可 */
+  src: url("https://pic-go-img.oss-cn-hangzhou.aliyuncs.com/ZhuZiAWan.woff2");
+/* 字体文件路径 */
+  font-display: swap;
+}
+body,
+.gitcalendar {
+  font-family: tzy !important;
+}
