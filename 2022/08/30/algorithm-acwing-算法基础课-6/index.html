@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>第六讲 贪心 | 0x3f</title><meta name="author" content="djl"><meta name="copyright" content="djl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="区间问题905. 区间选点选尽量少的点覆盖 N 个闭区间 （下面题目都为闭区间，不再重复） 方法 按每个区间右端点从小到大排序 枚举，如果当前区间已经包含点，则跳过；否则，选择当前区间的右端点   证明 常见证法一：对于 $A &#x3D; B$，只需证$A \le B$ 和 $A \ge B$   每个区间一定包含一个点，当前方案是一个合法方案，设为 cnt；设最优解为 ans，则ans为所有可行方案里的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第六讲 贪心">
+<meta property="og:url" content="https://djl777.github.io/2022/08/30/algorithm-acwing-%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE-6/index.html">
+<meta property="og:site_name" content="0x3f">
+<meta property="og:description" content="区间问题905. 区间选点选尽量少的点覆盖 N 个闭区间 （下面题目都为闭区间，不再重复） 方法 按每个区间右端点从小到大排序 枚举，如果当前区间已经包含点，则跳过；否则，选择当前区间的右端点   证明 常见证法一：对于 $A &#x3D; B$，只需证$A \le B$ 和 $A \ge B$   每个区间一定包含一个点，当前方案是一个合法方案，设为 cnt；设最优解为 ans，则ans为所有可行方案里的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://djl777.github.io/img/avator.jpg">
+<meta property="article:published_time" content="2022-08-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-20T04:05:24.503Z">
+<meta property="article:author" content="djl">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://djl777.github.io/img/avator.jpg"><link rel="shortcut icon" href="/img/avator.jpg"><link rel="canonical" href="https://djl777.github.io/2022/08/30/algorithm-acwing-%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE-6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '第六讲 贪心',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-20 12:05:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/backgroud.css"><link rel="stylesheet" href="/css/self_font.css"><link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/card_toc.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/mainColor/heoMainColor.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/poem.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/xlenco/JS-X@main/pace.js/pace.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">57</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-coffee"></i><span> 更多</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/speaksome/"><i class="fa-fw fas fa-random"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/todolists/"><i class="fa-fw fas fa-list-alt"></i><span> ToDo</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent"><nav id="nav"><span id="blog-info"><a href="/" title="0x3f"><span class="site-name">0x3f</span></a></span><div id="menus"></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-coffee"></i><span> 更多</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/speaksome/"><i class="fa-fw fas fa-random"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/todolists/"><i class="fa-fw fas fa-list-alt"></i><span> ToDo</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="nav-right"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">第六讲 贪心</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-29T16:00:00.000Z" title="发表于 2022-08-30 00:00:00">2022-08-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-20T04:05:24.503Z" title="更新于 2022-10-20 12:05:24">2022-10-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/%E8%AF%BE%E7%A8%8B/">课程</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/%E8%AF%BE%E7%A8%8B/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/">算法基础课</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="第六讲 贪心"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="区间问题"><a href="#区间问题" class="headerlink" title="区间问题"></a>区间问题</h1><h2 id="905-区间选点"><a href="#905-区间选点" class="headerlink" title="905. 区间选点"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/907/">905. 区间选点</a></h2><p>选尽量少的点覆盖 <code>N</code> 个<strong>闭区间</strong> （下面题目都为闭区间，不再重复）</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ol>
+<li>按每个区间<strong>右端点</strong>从小到大排序</li>
+<li>枚举，如果当前区间已经包含点，则跳过；否则，选择当前区间的右端点</li>
+</ol>
+<p><img src="1.png" alt="1"></p>
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3> <div class="note info modern"><p>常见证法一：对于 $A = B$，只需证$A \le B$ 和 $A \ge B$</p>
+</div>
+<ol>
+<li><p>每个区间一定包含一个点，当前方案是一个合法方案，设为 <code>cnt</code>；设最优解为 <code>ans</code>，则<code>ans</code>为所有可行方案里的最小值，有 $ans \le cnt$</p>
+</li>
+<li><p>按照此选法，能选出 <code>cnt</code> 个互不相交的区间，想覆盖这些区间至少需要 <code>cnt</code> 个点，所有可行方案都应该大于等于 <code>cnt</code>，有 $ans \ge cnt$</p>
+</li>
+</ol>
+<p><img src="2.png" alt="2"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/4197874/">代码</a></h3><p> 简单省略，注意起始右端点取 $-2e9$ 的写法</p>
+<h3 id="应用题-112-雷达设备"><a href="#应用题-112-雷达设备" class="headerlink" title="应用题 112. 雷达设备"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/114/">应用题</a> 112. 雷达设备</h3><ol>
+<li>使用 <code>double</code></li>
+<li>两个浮点的差值小于 <code>1e-6</code>，则认为相同（不加此判断也能通过）</li>
+</ol>
+<p>&emsp;</p>
+<h2 id="908-最大不相交区间数量"><a href="#908-最大不相交区间数量" class="headerlink" title="908. 最大不相交区间数量"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/910/">908. 最大不相交区间数量</a></h2><p>选择最大数量的<strong>不相交</strong>的<strong>闭区间</strong></p>
+<p>与上题完全一致</p>
+<h3 id="证明-1"><a href="#证明-1" class="headerlink" title="证明"></a>证明</h3><ol>
+<li><p>参考上题证明2，这样的选法一定是一种可行的方式，答案一定是所有可行方案的最大值，有 $ans \ge cnt$</p>
+</li>
+<li><p>反设 $ans &gt; cnt$，即最优解选出了 <code>ans</code> 个互不相交的区间，则至少需要 <code>ans</code> 个点才能将这些区间覆盖，参考上题，已经证明了只需要 <code>cnt</code> 个点就能将所有区间覆盖，矛盾，因此有 $ans \le cnt$</p>
+</li>
+</ol>
+<p>&emsp;</p>
+<h2 id="906-区间分组-111-畜栏预定"><a href="#906-区间分组-111-畜栏预定" class="headerlink" title="906. 区间分组          111. 畜栏预定"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/908/">906. 区间分组</a>          <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/113/">111. 畜栏预定</a></h2><p>将闭区间分成若干个组，每组之间区间两两不相交</p>
+<h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h3><ol>
+<li>将所有区间按<strong>左端点</strong>从小到大排序</li>
+<li>从前往后处理每个区间，判断能否将其放到某个现有的组中 $l[i] &gt; Max_r$，若不能，新建一组放入；否则放入，更新当前组的 $max_r$</li>
+</ol>
+<h3 id="证明-2"><a href="#证明-2" class="headerlink" title="证明"></a>证明</h3><ol>
+<li><p>划分方式合法，而 <code>ans</code> 是所有合法方案里的最小值，有 $ans \le cnt$</p>
+</li>
+<li><p>找到一个<strong>特殊的时刻</strong>：第一次开 <code>cnt</code> 这个组的时。对于当前区间 <code>i</code>，设其左端点为 $l_i$，对于前 <code>cnt-1</code> 个区间，它们的左端点一定小于等于 $l_i$，并且右端点一定大于等于 $l_i$ （否则可以放进去），这 <code>cnt</code> 区间都有一个点 $l_i$ 包含其中，因此可行方案至少包含 <code>cnt</code> 个组，有 $ans \ge cnt$</p>
+</li>
+</ol>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><p>用堆维护动态最小值（右端点）</p>
+<p><code>111</code> 多了每个区间应该被分到哪里，用结构体或者 <code>pair</code> 套 <code>pair</code> 都可以</p>
+<h2 id="907-区间覆盖"><a href="#907-区间覆盖" class="headerlink" title="907. 区间覆盖"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/909/">907. 区间覆盖</a></h2><p>用 <code>N</code> 个闭区间覆盖一个给定区间，如果不能覆盖返回 <code>-1</code></p>
+<h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h3><ol>
+<li>将<strong>左端点</strong>从小到大排序</li>
+<li>从前往后依次枚举每个区间，在所有能覆盖 <code>start</code> 的区间中选择右端点最大的区间，然后将 <code>start</code> 更新为右端点最大值</li>
+</ol>
+<h3 id="证明-3"><a href="#证明-3" class="headerlink" title="证明"></a>证明</h3> <div class="note info modern"><p>常见证法二：将最优解通过调整方式变为我们的方案</p>
+</div>
+<p>对于任意一个最优解，将两个方案选出的区间按左端点排序，从前往后找到第一个不一样的区间，有 $R<em>{cnt} \ge R</em>{ans}$ ，对于 <code>ans</code> 里的下一个区间的左端点 $L’<em>{ans}$ ，有 $R</em>{cnt} \ge R<em>{ans} \ge L’</em>{ans}$  ，因此可将当前 <code>ans</code> 的区间替换为 <code>cnt</code> 这个区间，继续上述过程，<code>ans</code> 的答案个数不会发生变化，且能将 <code>ans</code> 的所有区间替换为 <code>cnt</code> 的所有区间，有 $ans = cnt$</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><p>此题循环内判断条件较复杂，需要考虑：</p>
+<ul>
+<li>当前左端点是否被覆盖</li>
+<li>尽可能找到最大的右端点</li>
+<li>区间遍历结束右端点是否被覆盖</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">    <span class="type">int</span> j = i, r = <span class="number">-2e9</span>;</span><br><span class="line">    <span class="keyword">while</span>(j &lt; n &amp;&amp; a[j].first &lt;= st)&#123;</span><br><span class="line">        r = <span class="built_in">max</span>(r, a[j].second);</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(r &lt; st)&#123;</span><br><span class="line">        res = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    res++;</span><br><span class="line">    <span class="keyword">if</span>(r &gt;= ed)&#123;</span><br><span class="line">        flag = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    st = r;</span><br><span class="line">    i = j - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(!flag) res = <span class="number">-1</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, res);</span><br></pre></td></tr></table></figure>
+<p>&emsp;</p>
+<h1 id="Huffman树"><a href="#Huffman树" class="headerlink" title="Huffman树"></a>Huffman树</h1><h2 id="148-合并果子"><a href="#148-合并果子" class="headerlink" title="148. 合并果子"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/909/">148. 合并果子</a></h2><p>经典问题</p>
+<h3 id="证明-4"><a href="#证明-4" class="headerlink" title="证明"></a>证明</h3><ol>
+<li>权值最小的两个点深度<strong>一定</strong>最深，且<strong>可以</strong>互为兄弟</li>
+</ol>
+<p>反证：设其中一个点不为最深，则交换它和当前最深点（非最小）后，结果一定不会变差（不等式证明）</p>
+<ol>
+<li>证明 <code>n</code> 个点的哈夫曼树问题，在合并最小两个点后可以转化为 <code>n - 1</code> 的子问题（也即 <code>n - 1</code> 的最优解是 <code>n</code> 的最优解 <code>F(n)</code> ）</li>
+</ol>
+<p>满足等式关系（待补充）</p>
+<p>&emsp;</p>
+<h1 id="排序不等式"><a href="#排序不等式" class="headerlink" title="排序不等式"></a>排序不等式</h1><h2 id="913-排队打水"><a href="#913-排队打水" class="headerlink" title="913. 排队打水"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/915/">913. 排队打水</a></h2><p>直觉：慢的人后打水，排序</p>
+<h3 id="证明-调整法"><a href="#证明-调整法" class="headerlink" title="证明 调整法"></a>证明 调整法</h3><p>假设不是按照从小到大排序，则必然存在两个人，前一个人比后一个人大，有 $t<em>i &gt; t</em>{i+1}$，则：</p>
+<p>交换前：$t<em>i (n - i) + t</em>{i + 1}(n - i - 1)$</p>
+<p>交换后：$t_{i + 1}(n - 1) + t_i(n - i - 1)$</p>
+<p>两式相减，有 $t<em>i - t</em>{i + 1} &gt; 0$ ，证明交换后更优</p>
+<p>&emsp;</p>
+<h1 id="绝对值不等式"><a href="#绝对值不等式" class="headerlink" title="绝对值不等式"></a>绝对值不等式</h1><h2 id="104-货仓选址"><a href="#104-货仓选址" class="headerlink" title="104. 货仓选址"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/106/">104. 货仓选址</a></h2><p>$f(x) = |x_1 - x| + |x_2 - x| + … +|x_n - x|$，求最小值</p>
+<p>$f(x)=(|x<em>1 - x| + |x_n - x|) + (|x_2 - x| + |x</em>{n-1} - x|) + …$</p>
+<p>​          $\ge |x<em>1 - x_n| + |x_2 - x</em>{n - 1}| + …$</p>
+<p>取等条件为 x 在两数之间，x 取中位数</p>
+<p>&emsp;</p>
+<h1 id="推公式"><a href="#推公式" class="headerlink" title="推公式"></a>推公式</h1><h2 id="125-耍杂技的牛"><a href="#125-耍杂技的牛" class="headerlink" title="125. 耍杂技的牛"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/127/">125. 耍杂技的牛</a></h2><p>所有牛需叠在一起，定义风险值为每头牛上面的重量值之和 $sum_W$ - 自己的强壮程度 $S$， 求最大风险值的最小值</p>
+<h3 id="方法-3"><a href="#方法-3" class="headerlink" title="方法"></a>方法</h3><p>按照 $w_i + s_i$ 从小到大（从上到下）排序，结果最优</p>
+<h3 id="证明-5"><a href="#证明-5" class="headerlink" title="证明"></a>证明</h3><p>只证贪心得到的答案 &lt;= 最优解</p>
+<p>反设不是按照从小到大排序，则一定存在 $w<em>i + s_i &gt; w</em>{i + 1} + s_{i + 1}$ </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">第 i 个位置上的牛</th>
+<th style="text-align:center">第 i + 1 个位置上的牛</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">交换前</td>
+<td style="text-align:center">$w<em>1 + w_2 + … +w</em>{i - 1} - s_i$</td>
+<td style="text-align:center">$w<em>1 + w_2 + … +w_i  - s</em>{i + 1}$</td>
+</tr>
+<tr>
+<td style="text-align:center">交换后</td>
+<td style="text-align:center">$w<em>1 + w_2 + … +w</em>{i - 1}  - s_{i + 1}$</td>
+<td style="text-align:center">$w<em>1 + … +w</em>{i - 1} + w_{i + 1}  - s_i$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>消去相同项，然后同时 $+s<em>i + s</em>{i + 1}$</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">第 i 个位置上的牛</th>
+<th style="text-align:center">第 i + 1 个位置上的牛</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">交换前</td>
+<td style="text-align:center">$s_{i + 1}$</td>
+<td style="text-align:center">$w_i  + s_i$</td>
+</tr>
+<tr>
+<td style="text-align:center">交换后</td>
+<td style="text-align:center">$s_i$</td>
+<td style="text-align:center">$w<em>{i + 1}  + s</em>{i + 1}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>可知交换后的两项均小于交换前第 i + 1 个位置上的那一项</p>
+<h2 id="补充：114-国王游戏"><a href="#补充：114-国王游戏" class="headerlink" title="补充：114.国王游戏"></a>补充：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/116/">114.国王游戏</a></h2><p>上一题加减改为乘除，且涉及<strong>高精度</strong></p>
+<p>证明过程与上题一模一样</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://djl777.github.io">djl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://djl777.github.io/2022/08/30/algorithm-acwing-%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE-6/">https://djl777.github.io/2022/08/30/algorithm-acwing-%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE-6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://djl777.github.io" target="_blank">0x3f</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a></div><div class="post_share"><div class="social-share" data-image="/img/avator.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/08/30/algorithm-acwing-%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE-4/" title="第四讲 数学"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">第四讲 数学</div></div></a></div><div class="next-post pull-right"><a href="/2022/08/24/algorithm-acwing-%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8D%97-0x10/" title="0x10 基本数据结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">0x10 基本数据结构</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/08/30/algorithm-acwing-%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE-4/" title="第四讲 数学"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-30</div><div class="title">第四讲 数学</div></div></a></div><div><a href="/2022/11/07/algorithm-acwing-%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E8%AF%BE-1.6%20%E5%8C%BA%E9%97%B4DP/" title="1.6 区间DP"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-07</div><div class="title">1.6 区间DP</div></div></a></div><div><a href="/2022/09/08/algorithm-acwing-%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E8%AF%BE-3.6/" title="最近公共祖先"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-08</div><div class="title">最近公共祖先</div></div></a></div><div><a href="/2022/09/12/algorithm-acwing-%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E8%AF%BE-4.3/" title="线段树"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-12</div><div class="title">线段树</div></div></a></div><div><a href="/2022/08/24/algorithm-acwing-%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8D%97-0x10/" title="0x10 基本数据结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-24</div><div class="title">0x10 基本数据结构</div></div></a></div><div><a href="/2022/08/22/algorithm-acwing-%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E8%AF%BE-6.3/" title="6.3 排序和RMQ"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-22</div><div class="title">6.3 排序和RMQ</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">djl</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">57</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">区间问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#905-%E5%8C%BA%E9%97%B4%E9%80%89%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">905. 区间选点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E"><span class="toc-number">1.1.2.</span> <span class="toc-text">证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.3.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E9%A2%98-112-%E9%9B%B7%E8%BE%BE%E8%AE%BE%E5%A4%87"><span class="toc-number">1.1.4.</span> <span class="toc-text">应用题 112. 雷达设备</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#908-%E6%9C%80%E5%A4%A7%E4%B8%8D%E7%9B%B8%E4%BA%A4%E5%8C%BA%E9%97%B4%E6%95%B0%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text">908. 最大不相交区间数量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">证明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#906-%E5%8C%BA%E9%97%B4%E5%88%86%E7%BB%84-111-%E7%95%9C%E6%A0%8F%E9%A2%84%E5%AE%9A"><span class="toc-number">1.3.</span> <span class="toc-text">906. 区间分组          111. 畜栏预定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.3.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#907-%E5%8C%BA%E9%97%B4%E8%A6%86%E7%9B%96"><span class="toc-number">1.4.</span> <span class="toc-text">907. 区间覆盖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-2"><span class="toc-number">1.4.1.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-3"><span class="toc-number">1.4.2.</span> <span class="toc-text">证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="toc-number">1.4.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Huffman%E6%A0%91"><span class="toc-number">2.</span> <span class="toc-text">Huffman树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#148-%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90"><span class="toc-number">2.1.</span> <span class="toc-text">148. 合并果子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-4"><span class="toc-number">2.1.1.</span> <span class="toc-text">证明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">排序不等式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#913-%E6%8E%92%E9%98%9F%E6%89%93%E6%B0%B4"><span class="toc-number">3.1.</span> <span class="toc-text">913. 排队打水</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-%E8%B0%83%E6%95%B4%E6%B3%95"><span class="toc-number">3.1.1.</span> <span class="toc-text">证明 调整法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E5%80%BC%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">绝对值不等式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#104-%E8%B4%A7%E4%BB%93%E9%80%89%E5%9D%80"><span class="toc-number">4.1.</span> <span class="toc-text">104. 货仓选址</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A8%E5%85%AC%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">推公式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#125-%E8%80%8D%E6%9D%82%E6%8A%80%E7%9A%84%E7%89%9B"><span class="toc-number">5.1.</span> <span class="toc-text">125. 耍杂技的牛</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-3"><span class="toc-number">5.1.1.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-5"><span class="toc-number">5.1.2.</span> <span class="toc-text">证明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%EF%BC%9A114-%E5%9B%BD%E7%8E%8B%E6%B8%B8%E6%88%8F"><span class="toc-number">5.2.</span> <span class="toc-text">补充：114.国王游戏</span></a></li></ol></li></ol></div></div><div class="card-widget" id="card-poem"><div id="poem_sentence"></div><div id="poem_info"><div id="poem_dynasty"></div><div id="poem_author"></div></div></div><script src="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/jinrishici.js" charset="utf-8"></script><script type="text/javascript">jinrishici.load(function(result) {
+var sentence = document.querySelector("#poem_sentence")
+var author = document.querySelector("#poem_author")
+var dynasty = document.querySelector("#poem_dynasty")
+
+var sentenceText = result.data.content
+sentenceText = sentenceText.substr(0, sentenceText.length - 1);
+sentence.innerHTML = sentenceText
+dynasty.innerHTML = result.data.origin.dynasty
+author.innerHTML = result.data.origin.author + '《' + result.data.origin.title + '》'
+});</script><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/21/hello-world/" title="Hello World">Hello World</a><time datetime="2023-03-21T05:05:07.349Z" title="发表于 2023-03-21 13:05:07">2023-03-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/20/cs-al-%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="线段树">线段树</a><time datetime="2023-03-19T16:00:00.000Z" title="发表于 2023-03-20 00:00:00">2023-03-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/17/cs-al-%E6%95%B0%E8%AE%BA/" title="数论">数论</a><time datetime="2023-03-16T16:00:00.000Z" title="发表于 2023-03-17 00:00:00">2023-03-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/12/cs-%E6%9D%82/" title="随意记录">随意记录</a><time datetime="2023-03-11T16:00:00.000Z" title="发表于 2023-03-12 00:00:00">2023-03-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/01/cs-pl-java-book-core/" title="java 核心技术">java 核心技术</a><time datetime="2023-02-28T16:00:00.000Z" title="发表于 2023-03-01 00:00:00">2023-03-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By djl</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
