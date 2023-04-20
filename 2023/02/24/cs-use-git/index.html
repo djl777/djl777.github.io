@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>git | 0x3f</title><meta name="author" content="djl"><meta name="copyright" content="djl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基本概念   工作区：仓库的目录。工作区独立于各个分支。   暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区独立于各个分支。   版本库：存放所有已经提交到本地仓库的代码版本   版本结构：树结构，树中每个节点代表一个代码版本。   命令 全局设置 信息记录在 ~&#x2F;.gitconfig 文件中  git config --global user.name xxx：设置全局用户">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>git | 0x3f</title><meta name="author" content="djl"><meta name="copyright" content="djl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基本概念   工作区：仓库目录。工作区独立于各个分支。   暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区独立于各个分支。   版本库：存放所有已经提交到本地仓库的代码版本   版本结构：树结构，树中每个节点代表一个代码版本。    暂存   git status：查看当前工作区和暂存区状态  文件三个类别：未跟踪（Untracked）、已追踪（Tracked）、被忽略（Ig">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git">
 <meta property="og:url" content="https://djl777.github.io/2023/02/24/cs-use-git/index.html">
 <meta property="og:site_name" content="0x3f">
-<meta property="og:description" content="基本概念   工作区：仓库的目录。工作区独立于各个分支。   暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区独立于各个分支。   版本库：存放所有已经提交到本地仓库的代码版本   版本结构：树结构，树中每个节点代表一个代码版本。   命令 全局设置 信息记录在 ~&#x2F;.gitconfig 文件中  git config --global user.name xxx：设置全局用户">
+<meta property="og:description" content="基本概念   工作区：仓库目录。工作区独立于各个分支。   暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区独立于各个分支。   版本库：存放所有已经提交到本地仓库的代码版本   版本结构：树结构，树中每个节点代表一个代码版本。    暂存   git status：查看当前工作区和暂存区状态  文件三个类别：未跟踪（Untracked）、已追踪（Tracked）、被忽略（Ig">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://djl777.github.io/img/avator.jpg">
 <meta property="article:published_time" content="2023-02-23T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-03T10:06:21.468Z">
+<meta property="article:modified_time" content="2023-04-19T16:35:44.946Z">
 <meta property="article:author" content="djl">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
@@ -57,7 +57,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-03-03 18:06:21'
+  postUpdate: '2023-04-20 00:35:44'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -161,10 +161,10 @@
       }
     }
     detectApple()
-    })(window)</script><link rel="stylesheet" href="/css/backgroud.css"><link rel="stylesheet" href="/css/self_font.css"><link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/card_toc.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/mainColor/heoMainColor.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/poem.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/xlenco/JS-X@main/pace.js/pace.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">58</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-coffee"></i><span> 更多</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/speaksome/"><i class="fa-fw fas fa-random"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/todolists/"><i class="fa-fw fas fa-list-alt"></i><span> ToDo</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent"><nav id="nav"><span id="blog-info"><a href="/" title="0x3f"><span class="site-name">0x3f</span></a></span><div id="menus"></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-coffee"></i><span> 更多</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/speaksome/"><i class="fa-fw fas fa-random"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/todolists/"><i class="fa-fw fas fa-list-alt"></i><span> ToDo</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="nav-right"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">git</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-23T16:00:00.000Z" title="发表于 2023-02-24 00:00:00">2023-02-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-03T10:06:21.468Z" title="更新于 2023-03-03 18:06:21">2023-03-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8/">计算机使用</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8/git/">git</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">155</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="git"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="基本概念">基本概念</h2>
+    })(window)</script><link rel="stylesheet" href="/css/backgroud.css"><link rel="stylesheet" href="/css/self_font.css"><link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/card_toc.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/mainColor/heoMainColor.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/poem.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/xlenco/JS-X@main/pace.js/pace.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">64</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">63</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-coffee"></i><span> 更多</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/speaksome/"><i class="fa-fw fas fa-random"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/todolists/"><i class="fa-fw fas fa-list-alt"></i><span> ToDo</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent"><nav id="nav"><span id="blog-info"><a href="/" title="0x3f"><span class="site-name">0x3f</span></a></span><div id="menus"></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-coffee"></i><span> 更多</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/speaksome/"><i class="fa-fw fas fa-random"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/todolists/"><i class="fa-fw fas fa-list-alt"></i><span> ToDo</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="nav-right"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">git</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-23T16:00:00.000Z" title="发表于 2023-02-24 00:00:00">2023-02-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-19T16:35:44.946Z" title="更新于 2023-04-20 00:35:44">2023-04-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8/">计算机使用</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8/git/">git</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="git"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>基本概念</h1>
 <ul>
 <li>
-<p>工作区：仓库的目录。工作区<strong>独立于各个分支</strong>。</p>
+<p>工作区：仓库目录。工作区<strong>独立于各个分支</strong>。</p>
 </li>
 <li>
 <p>暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区<strong>独立于各个分支</strong>。</p>
@@ -176,14 +176,165 @@
 <p>版本结构：树结构，树中每个节点代表一个代码版本。</p>
 </li>
 </ul>
-<h2 id="命令">命令</h2>
-<h3 id="全局设置">全局设置</h3>
-<p>信息记录在 <code>~/.gitconfig</code> 文件中</p>
-<ol>
-<li><code>git config --global user.name xxx</code>：设置全局用户名，</li>
-<li>git config --global user.email <a href="mailto:xxx@xxx.com">xxx@xxx.com</a>：设置全局邮箱地址，信息记录在~/.gitconfig文件中</li>
-</ol>
-</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/git/">git</a></div><div class="post_share"><div class="social-share" data-image="/img/avator.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">djl</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">58</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.1.</span> <span class="toc-text">全局设置</span></a></li></ol></li></ol></div></div><div class="card-widget" id="card-poem"><div id="poem_sentence"></div><div id="poem_info"><div id="poem_dynasty"></div><div id="poem_author"></div></div></div><script src="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/jinrishici.js" charset="utf-8"></script><script type="text/javascript">jinrishici.load(function(result) {
+<p><img src="model.png" alt="model"></p>
+<h2 id="暂存">暂存</h2>
+<ul>
+<li>
+<p><code>git status</code>：查看当前工作区和暂存区状态</p>
+<ul>
+<li>文件三个类别：未跟踪（Untracked）、已追踪（Tracked）、被忽略（Ignored）</li>
+</ul>
+</li>
+<li>
+<p>删除文件：</p>
+<ul>
+<li><code>git rm --cached</code>：将一个已暂存的新文件取消暂存</li>
+<li><code>rm</code>：只在本地删除<strong>版本库中不存在</strong>的文件，要想删除版本库文件，还需执行 <code>git add File</code> 与 <code>git commit</code></li>
+<li><code>git rm</code>：删除本地，并且放到暂存区，只需要 <code>commit</code>（删除的文件需和当前版本库文件内容相同）</li>
+<li><code>git rm -f</code>：要删除的文件已经修改过</li>
+</ul>
+</li>
+<li>
+<p><code>.gitignore</code> 文件：</p>
+</li>
+<li>
+<p><code>git check-ignore -v *file*</code>：查看某个文件是否被忽略，以及匹配的规则</p>
+</li>
+<li>
+<p>常用语言的 <code>.gitignore</code> 模板：<a target="_blank" rel="noopener" href="https://github.com/github/gitignore">github/gitignore</a></p>
+</li>
+</ul>
+<h2 id="提交">提交</h2>
+<ul>
+<li>
+<p><code>git commit -a (--all)</code>：自动暂存所有更改的文件</p>
+</li>
+<li>
+<p><code>git log</code>：查看提交历史</p>
+<ul>
+<li><code>--oneline</code>：每一个提交一行，<code>--graph</code>：显示分支结构，通常配合使用</li>
+<li><code>--stat</code>：显示文件删改信息</li>
+<li><code>-p</code>：显示详细的修改内容</li>
+</ul>
+</li>
+<li>
+<p>每个提交都有一个唯一的 <code>sha-1</code> 标识符（40 位十六进制数）</p>
+<ul>
+<li><code>git show *id*</code>：显示提交详细信息（<code>id</code> 在不重复前提下可以只写前几位）</li>
+</ul>
+</li>
+<li>
+<p>检出之前的某一版本：<code>git checkout *id*</code></p>
+</li>
+</ul>
+<h3 id="commit-message">commit message</h3>
+<ul>
+<li>
+<p>意义：记录更改的原因/内容，方便定位/回溯（特别是合作项目）</p>
+</li>
+<li>
+<p>Angular 规范（来源：<a target="_blank" rel="noopener" href="https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format">angular/angular:CONTRIBUTING.md</a>）</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt;([scope]): &lt;summary&gt;</span><br><span class="line"></span><br><span class="line">[body]</span><br><span class="line"></span><br><span class="line">[footer]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>type：更改类型（fix/feat/docs/refactor/perf/test/ci/…）
+<ul>
+<li>重大更改可以写 BREAKING CHANGE 或 DEPRECATED（全大写）</li>
+</ul>
+</li>
+<li>scope：影响范围（可选，比如具体影响的模块等）</li>
+<li>summary：更改的简要描述，英文一般现在时，首字母小写句末无句号</li>
+<li>body：详细描述，可选</li>
+<li>footer：解决 issue 了可以写 Fixes #<em>id</em> 或 Closes #<em>id</em></li>
+</ul>
+</li>
+</ul>
+<h3 id="版本号">版本号</h3>
+<ul>
+<li>创建标签：
+<ul>
+<li>轻量标签：<code>git tag *tag* *id*</code>（<code>*id*</code> 可选，默认为 <code>HEAD</code>）</li>
+<li>附注标签：<code>git tag -a *tag* -m &quot;*message*&quot; *id*</code></li>
+</ul>
+</li>
+<li>查看标签：<code>git tag</code></li>
+<li>版本号命名一般规范：<a target="_blank" rel="noopener" href="https://semver.org/lang/zh-CN/">Semantic Versioning 2.0.0</a>
+<ul>
+<li>v<em>主版本号</em>.<em>次版本号</em>.<em>修订号</em>[-<em>预发布版本号</em>]</li>
+<li>修订号：兼容修改，修正不正确的行为</li>
+<li>次版本号：添加新功能，但是保持兼容</li>
+<li>主版本号：不兼容的 API 修改
+<ul>
+<li>且为 0 时表示还在开发阶段，不保证稳定性</li>
+</ul>
+</li>
+<li>预发布版本号：alpha/beta/rc.1/rc.2/…</li>
+<li>e.g. v1.0.0-beta &lt; v1.0.0-rc.1 &lt; v1.0.0 &lt; v1.0.1</li>
+</ul>
+</li>
+</ul>
+<h2 id="分支">分支</h2>
+<ul>
+<li>创建分支
+<ul>
+<li><code>git branch *name*</code>：基于当前 <code>HEAD</code></li>
+<li><code>git branch *name* *id*</code>：基于 <code>id</code> 提交</li>
+</ul>
+</li>
+<li>查看分支
+<ul>
+<li><code>git branch</code>（带 <code>-a</code> 显示远程分支）</li>
+<li><code>git show-branch</code> 更详细</li>
+</ul>
+</li>
+<li>切换分支
+<ul>
+<li><code>git checkout *name*</code></li>
+<li><code>git checkout -b *name*</code>：创建并切换</li>
+</ul>
+</li>
+<li>内容比较
+<ul>
+<li><code>git diff *branch1* *branch2*</code>：比较两个分支</li>
+<li><code>git diff *branch*</code>：比较工作区和分支</li>
+<li><code>git diff</code>：比较工作区和暂存区</li>
+</ul>
+</li>
+<li>强制修改分支位置
+<ul>
+<li><code>git branch -f main HEAD~3</code>：让分支指向另一个提交（将 main 分支强制指向 HEAD 的第 3 级父提交）</li>
+</ul>
+</li>
+</ul>
+<h3 id="HEAD">HEAD</h3>
+<p>HEAD 是一个对当前所在分支的符号引用，通常情况下<strong>指向分支名</strong></p>
+<p>想看 HEAD 指向，可以通过 <code>cat .git/HEAD</code> 查看， 如果 HEAD 指向的是一个引用，还可以用 <code>git symbolic-ref HEAD</code> 查看它的指向。</p>
+<p>detached HEAD：HEAD 指向某个历史提交，而不是某个“分支”：<code>git checkout *id*</code></p>
+<h3 id="引用">引用</h3>
+<ul>
+<li>
+<p>可以基于引用使用 ~ 或 ^ 定位父提交</p>
+<ul>
+<li>
+<p>~ 表示第一个父提交，~2 表示第一个父提交的第一个父提交</p>
+</li>
+<li>
+<p>^ 表示第一个父提交，^2 表示第二个父提交</p>
+</li>
+</ul>
+</li>
+<li>
+<p>一个提交可能会有多个父提交（merge commit）</p>
+</li>
+</ul>
+<div style="text-align: center;">
+<img src="git-relativeref.png" width="60%" style="margin: 0 auto;">
+</div>
+## 合并
+<h2 id="远程">远程</h2>
+<ul>
+<li><code>git remote -v</code>：查看远程仓库地址</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/git/">git</a></div><div class="post_share"><div class="social-share" data-image="/img/avator.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">djl</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">64</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">63</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9A%82%E5%AD%98"><span class="toc-number">1.1.</span> <span class="toc-text">暂存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4"><span class="toc-number">1.2.</span> <span class="toc-text">提交</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#commit-message"><span class="toc-number">1.2.1.</span> <span class="toc-text">commit message</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">1.2.2.</span> <span class="toc-text">版本号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF"><span class="toc-number">1.3.</span> <span class="toc-text">分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HEAD"><span class="toc-number">1.3.1.</span> <span class="toc-text">HEAD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B"><span class="toc-number">1.4.</span> <span class="toc-text">远程</span></a></li></ol></li></ol></div></div><div class="card-widget" id="card-poem"><div id="poem_sentence"></div><div id="poem_info"><div id="poem_dynasty"></div><div id="poem_author"></div></div></div><script src="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/jinrishici.js" charset="utf-8"></script><script type="text/javascript">jinrishici.load(function(result) {
 var sentence = document.querySelector("#poem_sentence")
 var author = document.querySelector("#poem_author")
 var dynasty = document.querySelector("#poem_dynasty")
