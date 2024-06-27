@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>支教 on 0x3f</title>
+    <link>http://localhost:4961/tags/%E6%94%AF%E6%95%99/</link>
+    <description>Recent content in 支教 on 0x3f</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>© 2024 0x3f</copyright>
+    <atom:link href="http://localhost:4961/tags/%E6%94%AF%E6%95%99/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>离别</title>
+      <link>http://localhost:4961/writing/elaine/volunteer-teacher/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:4961/writing/elaine/volunteer-teacher/</guid>
+      <description>回程的火车上，读到三毛的《紫衣》一章，“心不在焉的淡然”这几</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4961/writing/elaine/volunteer-teacher/feature.jpg" />
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elaine양지이 on 0x3f</title>
+    <link>http://localhost:11735/authors/elaine%EC%96%91%EC%A7%80%EC%9D%B4/</link>
+    <description>Recent content in Elaine양지이 on 0x3f</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>© 2024 0x3f</copyright>
+    <atom:link href="http://localhost:11735/authors/elaine%EC%96%91%EC%A7%80%EC%9D%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>日志</title>
+      <link>http://localhost:11735/writing/elaine/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:11735/writing/elaine/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>
